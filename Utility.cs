@@ -41,7 +41,9 @@ namespace UnitTestingWeek7
 
             // make this faster by using sqrt of input as limit
 
-            for (int i = 2; i < input; i++)
+            int limit = (int)Math.Ceiling(Math.Sqrt(input));
+
+            for (int i = 2; i < limit; i++)
             {
                 if (input % i == 0) return false;
             }
