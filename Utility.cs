@@ -38,12 +38,12 @@ namespace UnitTestingWeek7
         public bool IsPrime(int input)
         {
             if (input <= 1) return false;
+            if (input == 2) return true;
+            if (input % 2 == 0) return false;
 
-            // make this faster by using sqrt of input as limit
+            var limit = Math.Ceiling(Math.Sqrt(input));
 
-            int limit = (int)Math.Ceiling(Math.Sqrt(input));
-
-            for (int i = 2; i < limit; i++)
+            for (int i = 3; i <= limit; i++)
             {
                 if (input % i == 0) return false;
             }
@@ -55,7 +55,9 @@ namespace UnitTestingWeek7
         {
             List<int> found = new List<int>();
 
-            for (int i = 1; i < input; i++)
+            var limit = Math.Ceiling((double)input / 2);
+
+            for (int i = 2; i <= limit; i++)
             {
                 if (input % i == 0 && !IsPrime(i))
                 {
@@ -66,10 +68,12 @@ namespace UnitTestingWeek7
             return found;
         }
 
-        public double GetFloor(int a, int b)
+        public double GetDivisionFloor(int a, int b)
         {
             double numerator = a > b ? a : b;
             double denominator = a > b ? b : a;
+
+            if (denominator == 0) return 0;
 
             return Math.Floor(numerator / denominator);
         }
